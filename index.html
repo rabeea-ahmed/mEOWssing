@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mEOWssing</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+    <!-- audio -->
+    <audio id="door">
+        <source src="audio/doorOpen.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="bg-audio" loop>
+        <source src="audio/ambientsound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="meow" loop>
+        <source src="audio/meow.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="paper">
+        <source src="audio/paper.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- fade -->
+    <div id="fade-overlay"></div>
+
+    <!-- elements -->
+    <section class="start" id="start">
+        <img class="blur" src="img/blur-bg.png">
+        <img class="clear" src="img/building-start.png">
+        <img class="button-start" src="img/start.png" onclick="goToBuilding()">
+        <img class="objective" src="img/objective.png">
+        <img class="missing" src="img/missing.png">
+    </section>
+    
+
+    <script src="script.js"></script>
+    <script>
+        // fade
+        window.addEventListener("load", () => {
+        const overlay = document.getElementById("fade-overlay");
+
+        setTimeout(() => {
+            overlay.classList.add("fade-out");
+        }, 200); 
+        });
+
+        // paper sound
+        document.addEventListener("click", () => {
+        paper.play().then(() => {
+            paper.pause();
+            paper.currentTime = 0;
+        });
+        }, { once: true });
+
+    </script>
+</body>
+</html>

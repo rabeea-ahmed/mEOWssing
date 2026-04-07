@@ -1,0 +1,272 @@
+/* index.html */
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+    cursor: url("img/cursor11.png"), default;
+
+}
+
+.start {
+    position: relative;
+    height: 100vh;
+    background: black;
+
+    display: flex;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+
+    overflow: hidden;
+}
+
+.blur, .clear {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: opacity 0.3s ease-out;
+
+}
+
+.button-start {
+    position: absolute;
+    left: 85%;
+}
+
+.objective {
+    position: absolute;
+    left: 3%;
+
+}
+
+.button-start,
+.objective {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+
+    height: 12vh;
+    top:83%;
+
+    z-index: 3;
+}
+
+.button-start:hover{
+    transform: scale(1.1);
+    cursor: url("img/cursor22.png"), pointer;
+}
+
+.blur {
+    z-index: 1;
+    opacity: 1;
+}
+
+.clear {
+    left: 0;
+    height: 100%;
+    pointer-events: none;
+
+}
+
+.missing {
+    height: 60vh;
+    z-index: 2;
+}
+
+.missing:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.845));
+
+    cursor: url("img/cursor22.png"), pointer;
+}
+
+
+/* fade */
+#fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: black;
+    z-index: 9999;
+
+    opacity: 1;
+    transition: opacity 1.5s ease;
+}
+
+#fade-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+
+/* building.html */
+.home {
+    position: fixed;
+    width: 7vw;
+    top:80%;
+    left:90%;
+
+    z-index: 2;
+
+}
+
+.home:hover{
+    transform: scale(1.05);
+    cursor: url("img/cursor22.png"), pointer;
+}
+
+.background {
+    height: 300vh; 
+    background: url("img/apartments.png") no-repeat top center;
+    background-size: cover;
+}
+
+section {
+    height: 100vh;
+    position: relative;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* navigation */
+.btn { 
+    position: absolute; 
+    left: 80%; 
+    transform: translateX(-50%); 
+    opacity: 0; pointer-events: none; 
+    transition: 0.3s; 
+} 
+
+section:target .btn { 
+    opacity: 1; 
+    pointer-events: auto; 
+} 
+
+#one .btn { 
+    opacity: 1; 
+    pointer-events: auto; } 
+    
+
+
+.down { 
+    bottom: 10vh;
+ } 
+ 
+ .up { 
+    top: 10vh; 
+} 
+
+.btn img {
+    width: 5vw;   
+    height: auto;
+    display: block;
+    cursor: url("img/cursor22.png"), pointer;
+}
+
+.down img {
+    animation: bounceDown 1.5s infinite;
+}
+
+.up img {
+    animation: bounceUp 1.5s infinite;
+}
+
+@keyframes bounceDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3vh);
+    }
+}
+
+@keyframes bounceUp {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3vh);
+    }
+}
+
+
+/* apartment window */
+.invisible-btn1, .invisible-btn2, .invisible-btn3 {
+    position: absolute;  
+
+    background: transparent;
+    border: none;
+    cursor: url(/img/cursor22.png), pointer; 
+    opacity: 0.5;
+}
+
+
+.invisible-btn1:hover, .invisible-btn2:hover, .invisible-btn3:hover {
+    position: absolute;  
+    background: white;
+    border: none;
+    cursor: url(/img/cursor22.png), pointer; 
+    opacity: 0.2;
+}
+
+.invisible-btn1 {
+    width: 49.5vw;
+    height: 67vh;
+
+    top: 11.8vh;
+    left: 8vw;
+}
+
+.invisible-btn2 {
+    width: 49.5vw;
+    height: 69vh;
+
+    top: 18vh;
+    left: 8vw;
+}
+
+.invisible-btn3 {
+    width: 49.2vw;
+    height: 75.2vh;
+
+    top: 13.8vh;
+    left: 7.5vw;
+}
+
+/* cat */
+.cat1, .cat2, .cat3 {
+    position: absolute;  
+    width: 17vw;
+
+    cursor: url(/img/cursor22.png), pointer; 
+
+}
+
+.cat1 {
+    top: 45.25vh;
+    left: 63vw;
+}
+
+.cat2 {
+    top: 50.75vh;
+    left: 63vw;
+}
+
+.cat3 {
+    top: 48.75vh;
+    left: 63vw;
+}
+
+
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mEOWssing</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- fade -->
+    <div id="fade-overlay"></div>
+
+    <div class="background">
+        <!-- audio -->
+        <audio id="bg-audio" autoplay loop>
+            <source src="audio/ambientsound.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+        <audio id="stair-audio">
+            <source src="audio/metalstair.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="window-Open">
+            <source src="audio/windowOpen2.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="hiss">
+            <source src="audio/hiss.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+        <audio id="door">
+            <source src="audio/doorOpen.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <img class="home" id="home" src="img/home.png" onclick="goHome()">
+
+        
+        <audio id="happy">
+            <source src="audio/meow_happy.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- apartments -->
+        <section id="three"> 
+            <button class="invisible-btn3" onclick="goToPage3()"></button>
+
+            <a href="#two" class="btn down" onclick="playStair()"> 
+                <img src="img/down.png" alt="Scroll down"> 
+            </a> 
+
+            <img class="cat3" id="cat3" src="img/cat_standing.png" onclick="catHappy(this)">
+        </section>
+        
+        <section id="two"> 
+            <button class="invisible-btn2" onclick="goToPage2()"></button>
+
+            <a href="#three" class="btn up" onclick="playStair()"> 
+                <img src="img/up.png" alt="Scroll up"> 
+            </a> 
+            <a href="#one" class="btn down" onclick="playStair()"> 
+                <img src="img/down.png" alt="Scroll down"> 
+            </a> 
+
+            <img id="cat2" class="cat2" src="img/cat_standing.png" onclick="catHiss(this)">
+        </section> 
+        
+        <section id="one"> 
+            <button class="invisible-btn1" onclick="goToPage1()"></button>
+
+            <a href="#two" class="btn up" onclick="playStair()"> 
+                <img src="img/up.png" alt="Scroll up"> 
+            </a> 
+
+             <img id="cat1" class="cat1" src="img/cat_standing.png" onclick="catHiss(this)">
+
+        </section>
+    
+    </div>
+
+
+    <script src="script.js"></script>
+    <script>
+        // fade
+        window.addEventListener("load", () => {
+        const overlay = document.getElementById("fade-overlay");
+
+        setTimeout(() => {
+            overlay.classList.add("fade-out");
+        }, 200); 
+        });
+
+        // background sound
+        window.addEventListener("DOMContentLoaded", () => {
+            const audio = document.getElementById("bg-audio");
+            audio.volume = 0.3;
+            audio.play();
+        });
+    </script>
+
+</body>
+</html>

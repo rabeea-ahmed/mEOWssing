@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockstar's Apartment</title>
+<style>
+    body {
+        margin: 0;
+        background: black;
+        overflow: hidden;
+        cursor: url("../img/cursor11.png"), default;
+    }
+
+    .scene {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    .bg {
+        position: absolute; 
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); } 
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+    }
+
+    .strum {
+        position: absolute;
+        top: 30.5vh;      
+        left: 66.4vw;     
+        width: 18vw;      
+        cursor: url("../img/cursor22.png"), pointer;
+        animation: pulse 2s infinite;
+    }
+
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+
+        display: none; 
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .popup video {
+        width: 60%;
+        max-width: 62.5vw; 
+    }
+
+    .close {
+        position: absolute;
+        top: 2.8vh;     
+        right: 2.3vw;   
+        color: white;
+        font-size: 2.3vw; 
+        cursor: url("../img/cursor22.png"), pointer;
+    }
+
+    .speaker {
+        position: absolute;
+        top: 26.4vh;    
+        left: 23.4vw;   
+        width: 8.6vw;   
+        cursor: url("../img/cursor22.png"), pointer;
+        animation: pulse 2s infinite;
+    }
+
+    .backbutton {
+        position: absolute;
+        top: 4.6vh;     
+        left: 3.1vw;    
+        width: 4.5vw;   
+        cursor: url("../img/cursor22.png"), pointer;
+        animation: pulse 1s infinite;
+        z-index: 10; 
+    }
+
+    /* fade */
+    #fade-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        background: black;
+        z-index: 9999;
+
+        opacity: 1;
+        transition: opacity 1.5s ease;
+    }
+
+    #fade-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+</style>
+</head>
+<body>
+    <div id="fade-overlay"></div>
+    <audio id="bgMusic" loop>
+        <source src="rockmusic.mp3" type="audio/mpeg">
+    </audio>
+
+    <a href="../building.html">
+            <img src="left.png" class="backbutton">
+    </a>
+    <div class="scene">
+        <img src="bg.jpg" class="bg">
+        <img src="strum-gif.gif" class="strum" onclick="openVideo()">
+        <img src="wallspeaker.png" class="speaker" onclick="toggleMusic()">
+
+    </div>
+
+    <div class="popup" id="videoPopup">
+        <span class="close" onclick="closeVideo()">✖</span> 
+        <video id="video" autoplay controls> <!-- autoplay makes it play when popup opens -->
+            <source src="strumvid.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        function openVideo() {
+            document.getElementById("videoPopup").style.display = "flex"; // shows popup
+            document.getElementById("video").play(); // plays video when popup opens
+        }
+
+        function closeVideo() {
+            const popup = document.getElementById("videoPopup"); 
+            const video = document.getElementById("video");
+
+            popup.style.display = "none"; // hides popup
+            video.pause(); // pauses the video when popup closed
+            video.currentTime = 0; // and resets it to start so it starts from the beginning when opened again
+        }
+
+        const music = document.getElementById("bgMusic");
+
+        document.addEventListener("click", function startMusic() { // music plays upon first click anywhere
+            music.play();
+            document.removeEventListener("click", startMusic); //removes so it doesnt interfere with toggleMusic
+        });
+
+        function toggleMusic() { // depending when the user clicks,
+            if (music.paused) {  // if music is paused then itll toggle play
+                music.play();
+            } else { // else itll toggle pause
+                music.pause();
+            }
+        }
+    
+        window.addEventListener("load", () => {
+        const overlay = document.getElementById("fade-overlay");
+
+        setTimeout(() => {
+            overlay.classList.add("fade-out");
+        }, 200); 
+        });
+
+    </script>
+</body>
+</html>
