@@ -207,7 +207,7 @@ section:target .btn {
 
     background: transparent;
     border: none;
-    cursor: url(/img/cursor22.png), pointer; 
+    /* cursor: url(/img/cursor22.png), pointer;  */
     opacity: 0.5;
 }
 
@@ -216,7 +216,7 @@ section:target .btn {
     position: absolute;  
     background: white;
     border: none;
-    cursor: url(/img/cursor22.png), pointer; 
+    cursor: url(/img/cursor22.png), pointer !important; 
     opacity: 0.2;
 }
 
@@ -249,7 +249,7 @@ section:target .btn {
     position: absolute;  
     width: 17vw;
 
-    cursor: url(/img/cursor22.png), pointer; 
+    cursor: url(/img/cursor22.png), pointer !important; 
 
 }
 
